@@ -1,12 +1,12 @@
-import React, { FormEvent } from "react";
-import { useState } from "react";
+import React, { FormEvent, useState  } from "react";
+import api from "../../services/api";
+import useAuth, { IUserData } from "../../hooks/useAuth";
+import { AxiosResponse } from "axios";
+
 import { Container, ErrorMessage, InputBonito, PasswordWrapper } from "./styles";
 import Logo from "../../assets/images/logo.svg"
 import ShowPassword from "../../assets/icons/showPass.svg"
 import HidePassword from "../../assets/icons/hidePass.svg"
-import api from "../../services/api";
-import useAuth, { IUserData } from "../../hooks/useAuth";
-import { AxiosResponse } from "axios";
 
 interface Cred {
     email: string;

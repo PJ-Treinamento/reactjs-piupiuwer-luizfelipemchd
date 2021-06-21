@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Route from "./Route"
+
 import Redirection from "./redirect"
 import Login from "../pages/Login";
 import Timeline from "../pages/Timeline";

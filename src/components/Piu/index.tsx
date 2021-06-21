@@ -1,14 +1,15 @@
 import React from "react";
+import { useState } from "react";
+import { Piu, PiuLike } from "../../models";
+import useAuth from "../../hooks/useAuth";
+import api from "../../services/api";
+
 import { BalloonCurve, BalloonPiu, BalloonWrapper, Delete, ImgWrapper, InteractOptions, Like, PiuDisplay, PiuWrapper, RightSide } from "./styles";
 import  like from "../../assets/icons/like.svg"
 import fav from "../../assets/icons/fav.png"
 import faved from "../../assets/icons/faved.png"
 import deletePiu from "../../assets/icons/delete.svg"
 import stdPic from "../../assets/icons/goProfile.svg"
-import { useState } from "react";
-import { Piu, PiuLike, User } from "../../models";
-import useAuth from "../../hooks/useAuth";
-import api from "../../services/api";
 
 interface PiuMadeProps{
     username: string;

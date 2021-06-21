@@ -1,6 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../services/api";
-import { AlertUser, Balloon, BalloonWritePiu, CounterMakePiu, DropdownWindow, Emphasys, Feed, Header, InteractSuggestions, LaunchWrapper, MenuHeader, OptionsPiu, PiuMaker, PiuSection, PiuTextarea, PiuTimeline, SearchBar, Unfilter, Wrapper, WrapperOptionsMakePiu, WrapperSearchBar, WritePiu } from "./styles";
+import { AxiosResponse } from "axios";
+import { Piu } from "../../models";
+import useAuth, { IUserData } from "../../hooks/useAuth";
+import PiuMade from "../../components/Piu";
+
+import { AlertUser, BalloonWritePiu, CounterMakePiu, DropdownWindow, Emphasys, Feed, Header, InteractSuggestions, LaunchWrapper, MenuHeader, OptionsPiu, PiuMaker, PiuSection, PiuTextarea, PiuTimeline, SearchBar, Unfilter, Wrapper, WrapperOptionsMakePiu, WrapperSearchBar, WritePiu } from "./styles";
 import { BalloonCurve, BalloonWrapper, ImgWrapper } from "../../components/Piu/styles";
 
 import miniLogo from "../../assets/images/miniLogo.svg"
@@ -10,14 +15,8 @@ import goProfile from "../../assets/icons/goProfile.svg"
 import insertPic from "../../assets/icons/insertPic.svg"
 import insertLink from "../../assets/icons/insertLink.svg"
 import insertEmoji from "../../assets/icons/insertEmoji.svg"
-import PiuMade from "../../components/Piu";
 import logOut from "../../assets/icons/logOut.svg"
-import georgeOCurioso from "../../assets/images/macaco-ak47.jpg"
 import cancelFilter from "../../assets/icons/cancelFilter.svg"
-import { useEffect } from "react";
-import { AxiosResponse } from "axios";
-import { Piu, User } from "../../models";
-import useAuth, { IUserData } from "../../hooks/useAuth";
 
 const Timeline: React.FC = () =>{
     
