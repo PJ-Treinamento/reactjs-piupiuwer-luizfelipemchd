@@ -35,7 +35,7 @@ export const AuthProvider: React.FC = ({ children }) => {
         const updateUser = async () =>{
             const userString = localStorage.getItem('@Piupiuwer:user')
             const user = userString ? JSON.parse(userString) : "";
-            if(user && user != userData.user){
+            if(user && user !== userData.user){
                 const response: AxiosResponse<User[]> = await api.get(`/users?username=${user.username}`, {})
                 setUserData( { ...userData, user: response.data[0] })
                 localStorage.setItem("@Piupiuwer:user", JSON.stringify(user) )

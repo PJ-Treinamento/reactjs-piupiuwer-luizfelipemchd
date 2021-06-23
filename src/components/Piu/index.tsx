@@ -23,7 +23,7 @@ interface PiuMadeProps{
 
 const PiuMade: React.FC<PiuMadeProps> = (props) =>{
     const [likeNumber, setLikeNumber] = useState<Number>(props.likes.length)
-    const {token, user, setUserData} = useAuth()
+    const { user } = useAuth()
     const [situation, setSituation] = useState< {isLiked:boolean, isFaved: boolean} >( () => {
         const liked = props.likes.some( piuLike => piuLike.user.id === user.id)
         const favorited = user.favorites.some( piu => piu.id === props.id)

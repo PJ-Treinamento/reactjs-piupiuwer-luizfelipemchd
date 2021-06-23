@@ -19,7 +19,7 @@ const Login: React.FC = () => {
     const [userEMail, setUserEMail] = useState("")
     const [userPassword, setUserPassword] = useState("")
     const [failTry, setFailTry] = useState<number>(0);
-    const {token, user, setUserData} = useAuth()
+    const { setUserData} = useAuth()
 
     const ToogleVisibility = () => {
         setVisibility(visibility === "password" ? "text" : "password");
