@@ -5,7 +5,7 @@ import { Piu } from "../../models";
 import useAuth, { IUserData } from "../../hooks/useAuth";
 import PiuMade from "../../components/Piu";
 
-import { AlertUser, BalloonWritePiu, CounterMakePiu, DropdownWindow, Emphasys, Feed, Header, InteractSuggestions, LaunchWrapper, MenuHeader, OptionsPiu, PiuMaker, PiuSection, PiuTextarea, PiuTimeline, SearchBar, Unfilter, Wrapper, WrapperOptionsMakePiu, WrapperSearchBar, WritePiu } from "./styles";
+import { AlertUser, BalloonWritePiu, CounterMakePiu, DropdownWindow, Emphasys, Feed, FriendsTitle, Header, InteractSuggestions, LaunchWrapper, Loading, LowerHalf, MenuHeader, OptionsPiu, PiuMaker, PiuSection, PiuTextarea, PiuTimeline, SearchBar, Unfilter, UpperHalf, Wrapper, WrapperOptionsMakePiu, WrapperSearchBar, WritePiu } from "./styles";
 import { BalloonCurve, BalloonWrapper, ImgWrapper } from "../../components/Piu/styles";
 
 import miniLogo from "../../assets/images/miniLogo.svg"
@@ -17,11 +17,14 @@ import insertLink from "../../assets/icons/insertLink.svg"
 import insertEmoji from "../../assets/icons/insertEmoji.svg"
 import logOut from "../../assets/icons/logOut.svg"
 import cancelFilter from "../../assets/icons/cancelFilter.svg"
+import FriendProfile from "../../components/FriendProfile";
+//import georgeOCurioso from "../../assets/images/macaco-ak47.jpg"
+import sadFace from "../../assets/images/sadFace.jpeg"
 
 const Timeline: React.FC = () =>{
     
     const [piuList, setPiuList] = useState<Piu[]>([] as Piu[]);
-    const {token, user, setUserData} = useAuth()
+    const { user, setUserData} = useAuth()
     const [filterPius, setFilterPius] = useState<string>("");
     const [newPiu, setNewPiu] = useState<string>("");
     const [cleanFilter, setcleanFilter] = useState<boolean>(false);
@@ -92,9 +95,20 @@ const Timeline: React.FC = () =>{
         setUserData( {} as IUserData)
     }
 
+    console.log(user.followers, "folowers")
+    const friendsTag = user.followers.map( friend => <FriendProfile img={friend.photo} name={friend.username}/>) 
+    
+    if(!!!piuList.length){
+        return(
+            <Loading>
+                <img src={miniLogo} alt="" />
+                Carregando...
+            </Loading>
+        )
+    }
+
     return(
         <Wrapper>
-
             <Header>
                 <img src={miniLogo} alt="" />
 
@@ -185,12 +199,28 @@ const Timeline: React.FC = () =>{
                 </PiuTimeline>
 
                 <InteractSuggestions>
-
+                    <UpperHalf>
+                        <ImgWrapper>
+                            <img src={user.photo} alt="" />
+                        </ImgWrapper>
+                        <b>{user.first_name + " " +  user.last_name}</b>
+                        <div></div>
+                    </UpperHalf>
+                    <FriendsTitle>
+                        <p>Amigos</p>
+                    </FriendsTitle>
+                    <LowerHalf>
+                        {
+                            friendsTag.length
+                            ? friendsTag 
+                            :<FriendProfile img={sadFace} name={"Foi mal. Nenhum amigo"}/>
+                            
+                        }
+                    </LowerHalf>
                 </InteractSuggestions>
             </Feed>
-
         </Wrapper>
-    );
+    )
 }
 
 export default Timeline;

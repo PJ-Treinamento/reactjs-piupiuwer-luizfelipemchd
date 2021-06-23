@@ -12,6 +12,28 @@ interface IAlertUser{
     display: boolean;
 }
 
+export const Loading = styled.div`
+    margin-top: 20rem;
+    font-size: 30px;
+    height: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img{
+        margin-right: 1rem;
+        animation: rotation 1s infinite linear; 
+    }
+    @keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+`
+
 export const Wrapper = styled.div`
     background-color: #e5e5e5;
 `
@@ -109,7 +131,8 @@ export const MenuHeader = styled.ul`
 
 export const Feed = styled.main`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
     height: 100%;
 `
@@ -279,5 +302,39 @@ export const PiuSection = styled.section`
 `
 
 export const InteractSuggestions = styled.aside`
-
+    align-self: flex-start;
+    width: 45rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `
+
+export const UpperHalf = styled.div`
+    display: flex;
+    margin-top: 10rem;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    >div{
+        margin-right: -5rem;
+    }
+
+    b{
+        justify-self: center;
+        font-size: 24px;
+    }
+`
+
+export const FriendsTitle = styled.div`
+    font-size: 16px;
+    margin: 3rem 0 2rem 0;
+    width: 30rem;
+    color: #969696;
+    font-weight: bold;
+    border-bottom: 2px solid #969696;
+    display: flex;
+    justify-content: flex-start;
+`
+
+export const LowerHalf = styled.div``
+
